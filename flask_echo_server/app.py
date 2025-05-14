@@ -10,7 +10,7 @@ def echo():
 @app.route('/echo_twice', methods=['POST'])
 def echo_twice():
     data = request.get_json()
-    return jsonify({"echo_twice": {"first": data, "second": data}})
+    return jsonify({"echo_twice": [data, data]})
 
 if __name__ == "__main__":
     app.run(debug=True)
