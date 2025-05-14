@@ -12,3 +12,15 @@ def test_echo(client):
     assert response.status_code == 200
     assert response.get_json() == {"echo": {"message": "Hello, World!"}}
 
+def test_echo_twice(client):
+    sample_data = {"message": "test_message", "value": 42}
+    expected_response_data = {
+        "echo_twice": {
+            "first": sample_data,
+            "second": sample_data
+        }
+    }
+    response = client.post('/echo_twice', json=sample_data)
+    assert response.status_code == 200
+    assert response.get_json() == expected_response_data
+
